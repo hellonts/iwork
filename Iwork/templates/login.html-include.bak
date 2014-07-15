@@ -1,0 +1,107 @@
+
+{% include "head.html" %}
+
+
+<body>
+	
+	
+
+<div class="container-fluid">
+
+	<div class="row-fluid">
+		<div class="span12">
+		</div>
+	</div><hr>
+
+
+
+
+	<div class="row-fluid">
+		<div class="span8" >
+			<img style="width:760px;height:450px;" src="/static/img/6.jpg">
+
+
+
+
+
+
+
+		</div>
+		<div class="span4">
+			<form class="form-signin" action="" id="validform"  method="post" >
+				{% csrf_token %}
+				<h2 class="form-signin-heading">Please sign in</h2>
+					<input type="text" name="username" id="id_username" class="input-block-level" placeholder="username" >
+					<input type="password" name="password" id="id_password" class="input-block-level" placeholder="Password" >
+						<label class="checkbox">
+							<input type="checkbox" value="remember-me"> Remember me
+						</label>
+					<button class="btn  btn-primary" type="submit">Sign in</button>
+			</form>
+			  <script>
+        			$(function() {    
+                			$('#validform').scojs_valid({rules: {username: ['not_empty', 'not_empty'], password: ['not_empty', {'min_length': 4}] }});  
+                });
+        		</script>
+			 {% if password_is_wrong %}
+                        <div class="alert alert-error">
+                         <button type="button" class="close" data-dismiss="alert">×</button>
+                        <h4>错误!</h4>用户名或密码错误
+                        </div>
+                        {% endif %}
+			
+			<!-- {% if user_is_none %}
+                        <div class="alert alert-error2">
+                         <button type="button" class="closes" data-dismiss="alert">×</button>
+                        <h4>错误!</h4>用户名或密码不能为空
+                        </div>
+                        {% endif %}-->
+
+
+
+
+
+
+
+
+
+		</div>
+	</div><hr>
+	<div class="row-fluid">
+		<div class="span4">
+
+
+		{% include "footer.html" %}
+
+
+		</div>
+		<div class="span4">
+
+
+
+
+
+
+
+
+
+		</div>
+		<div class="span4">
+		</div>
+	</div>
+</div>
+   <!-- /container -->
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+                                                                                                     
+	<script >
+	$(function() {    
+		$('#valid_form').scojs_valid({rules: {username: ['not_empty', 'not_empty'], password: ['not_empty', {'min_length': 4}] }});  
+		});
+	</script>
+
+
+
+</body>
+</html>

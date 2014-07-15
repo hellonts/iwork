@@ -1,0 +1,42 @@
+{% extends "baseadmin.html" %}
+{% load url from future %}
+<html>
+  <head>
+	{% block head %} {% endblock %}
+    {% block title %}<title>Sign in Twitter Bootstrap</title>{% endblock %}
+  </head>
+  <body>
+
+   {% block content %}
+         
+    {% endblock %}
+	{% block file %}
+       	   <ol class="breadcrumb">
+                <li><a href="/Iwork/admin/">Home</a></li>
+                <li><a href="#">ipadd</a></li>
+                <li class="active">Data</li>
+	
+           </ol>
+	<div class="filetext">
+	<form action="" method="post">
+	 {% csrf_token %} 
+    <table class="table table-striped">
+    <tr class="ipadd_td_left">
+	<td class="col-xs-1">{{ssh_protocol.ssh_protocol_type.label}}</td>
+        <td class="col-xs-2">{{ ssh_protocol.ssh_protocol_type }}</td>
+	<td  class="col-xs-3" style="text-align:left">{{ ssh_protocol.ssh_protocol_type.errors }}</td>
+	</tr>
+    </tr>
+  	<td></td>
+        <td><button  type="submit" class="btn btn-primary"> 添 加 </button></td>
+	<td></td>
+    </tr>
+    </table>
+</form>
+	</div>
+	{% endblock %}
+
+	{% block footer %}{% endblock %}
+
+	</body>
+</html>

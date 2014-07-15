@@ -1,0 +1,40 @@
+{% extends "baseadmin.html" %}
+{% load url from future %}
+<html>
+  <head>
+	{% block head %} {% endblock %}
+    {% block title %}<title>Sign in Twitter Bootstrap</title>{% endblock %}
+  </head>
+  <body>
+
+   {% block content %}
+         
+    {% endblock %}
+	{% block file %}
+       	   <ol class="breadcrumb">
+                <li><a href="/Iwork/admin/">Home</a></li>
+                <li><a href="#">salt</a></li>
+                <li class="active">Data</li>
+	
+           </ol>
+		<form action=""	method="post"> {% csrf_token %}
+		<table class="table ">
+		<tbody>
+		</tbody>
+		</table>
+		</form>
+
+
+
+
+
+
+
+
+
+	{% endblock %}
+
+	{% block footer %}{% endblock %}
+
+	</body>
+</html>

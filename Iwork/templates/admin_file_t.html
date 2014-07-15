@@ -1,0 +1,78 @@
+{% extends "baseadmin.html" %}
+{% load url from future %}
+<html>
+  <head>
+	{% block head %} {% endblock %}
+    {% block title %}<title>Sign in Twitter Bootstrap</title>{% endblock %}
+	<style type="text/css">
+
+	{% include "msg.html" %}
+	</style>
+  </head>
+  <body>
+
+   {% block content %}
+    {% endblock %}
+	{% block file %}{% csrf_token %}
+	<ol class="breadcrumb">
+                <li><a href="/Iwork/admin/">Home</a></li>
+                <li><a href="#">File_transfer</a></li>
+                <li class="active">Data</li>
+	
+           </ol>
+		<div class="alone_c">
+		<form action="" method="post">{% csrf_token %}
+    		<table class="table ">
+			<tr class="ipadd_td_left">
+			<td class="col-xs-1">请选择ip： </td>
+			<td  class="col-xs-2">
+    			<select name="select" id="ipname" class="form-control" required>
+        		<option value="" selected="selected" >请选择ip</option>
+        		{% for ip in iplist %}
+        		<option value="{{ ip.id }}">{{ ip.ip_address }} </option>
+        		{% endfor %}
+        		</select></td>
+			<td class="col-xs-2"></td>
+			</tr></br>
+			<tr class="ipadd_td_left">
+			<td class="col-xs-1">请输入本地文件路径： </td>
+			<td class="col-xs-2"><input type="text" name="localpath" class="form-control" placeholder="Full file path" required></td>
+			<td class="col-xs-2"></td>
+			</tr>
+			<tr class="ipadd_td_left">
+                        <td class="col-xs-1">请输入参数： </td>
+                        <td class="col-xs-2"><input type="text" name="remotepath" class="form-control" placeholder="Full file path" required></td>
+			<td class="col-xs-2"></td>
+                        </tr>
+		</table><hr>
+		<td class="ipadd_td_left"><button  type="submit" name="get" class="btn btn-primary"> 执行 </button></td>
+		</form>
+		</div>
+		<div class="active">
+		<table class="table table-striped">
+		<td align="left">
+		<h5><p>Service{{ip}}返回信息:</p></h5>
+
+		{% if messages %}
+		  {% for message in messages %}
+			{% if message.tages %}
+		<div class="alert alert-error">
+			<h5> <p class="text-primary">{{ message.tags}}</br></p></h5>
+
+		</div>
+			{% endif %}
+		   {{message}}
+		  {% endfor %}
+                {% endif %}
+
+
+
+		</td></table>
+		</div>
+
+	{% endblock %}
+
+	{% block footer %}{% endblock %}
+
+	</body>
+</html>

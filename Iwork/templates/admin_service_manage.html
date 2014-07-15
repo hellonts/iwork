@@ -1,0 +1,157 @@
+{% extends "baseadmin.html" %}
+{% load url from future %}
+<html>
+  <head>
+	{% block head %} {% endblock %}
+    {% block title %}<title>Sign in Twitter Bootstrap</title>{% endblock %}
+	<style type="text/css">
+
+	{% include "msg.html" %}
+	</style>
+  </head>
+  <body>
+
+   {% block content %}
+    {% endblock %}
+	{% block file %}{% csrf_token %}
+	<ol class="breadcrumb">
+                <li><a href="/Iwork/admin/">Home</a></li>
+                <li><a href="#">Service_manager</a></li>
+                <li class="active">Data</li>
+	
+           </ol>
+
+                <div class="page">
+                
+		<form   method="post" action="" >{% csrf_token %}
+                <table class="table ">
+		<tr class="ipadd_td_left">
+		<td class="col-xs-1">当前显示的地址:</td>
+		<td class="col-xs-1"><input class="form-control" id="txtControl" type="text" name="atpath" placeholder="{{IDS}}" value="" disabled></td>
+		<td class="col-xs-2"></td>
+		</tr>
+                <tr class="ipadd_td_left">
+                <td class="col-xs-1">要查看的地址列表：</td>
+                <td class="col-xs-1">
+		 <select name="select" class="form-control" required>
+                        <option value="" selected="selected" >请选择</option>
+                        {% for i in iplist %}
+                        <option value="{{ i.id }}" >{{ i.ip_address }} </option>
+                        {% endfor %}
+                        </select>
+		</td>
+		<td class="col-xs-2" style="text-align:left;"><button  type="submit" name="yes" class="btn btn-default btn-sm"> 确定 </button></td>
+		</tr>
+		<tr class="ipadd_td_left">
+		<td class="col-xs-1"></td>
+		<td class="col-xs-2"></td>
+		<td class="col-xs-2"></td>
+		</tr>
+		</table>
+		</form>
+		</div>
+		{% if pages %}
+		<div class="ipadd_td_left">	
+		<form   method="post" action="" >{% csrf_token %}
+                <div class="ipadd_td_left">
+                <table   class="table table-bordered table-hover" >
+                                <thead >
+                                <tr class="active">
+                                <th >Services_name</th>
+                                <th >Services_status</th>
+                                <th >Operation</th>
+                                </tr>
+                                </thead>
+
+                                <tbody >
+                                {% for x in pages %}
+                                <tr >
+                                <td class="col-xs-1">{{ x.name }} </td>
+                                <td class="col-xs-1"><span class="label label-primary">{{ x.status }}</span></td>
+				<td class="col-xs-2"><button  data-toggle="modal" id="{{x.name}}|{{x.status}}"data-target="#myModal" type="button" class="btn btn-default btn-sm" >change</button></td>
+				</tr>
+					
+				{% endfor %}
+				</tbody>
+			</table>
+				<script>
+				
+
+
+				</script>
+		</div>
+		</form>
+		<div>
+		<form   method="post" action="" >
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  			<div class="modal-dialog" style="text-align:left">
+    			   <div class="modal-content">
+      					<div class="modal-header">
+			{% csrf_token %}
+        				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        				<h4 class="modal-title" id="myModalLabel">服务状态更改</h4>
+      					</div>
+      				<div class="modal-body" >
+       					<h4> 确定要变更服务状态吗?</h4>
+					<div class="hide"><input class="hide" id="disabledInput" type="text" name="oldip" value="{{IDS}}" ></div>
+					<div class="hide"><input class="hide" id="service_name" type="text" name="servicename" value=""></div>
+      				</div>
+      				<div class="modal-footer" >
+        				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        				<input type="submit" name="change" class="btn btn-primary" value="确定">
+					
+
+
+
+
+      				</div>
+    			   </div>
+  			</div>
+		</div><!-- /.modal -->
+				</form>
+		</div>
+
+
+		</div>
+
+			<ul class="pagination" >
+                        <li > {% if pages.has_previous %}
+                        <a href="?page={{ pages.previous_page_number }}&date={{times}}">上一页</a>
+                        {% endif %}</li>
+                        <li class="active"><a>第{{ pages.number }}页<span class="sr-only">(current)</span></a></li>
+                        <li><a>共{{ pages.paginator.num_pages }}页</a></li>
+                        <li > {% if pages.has_next %}
+                        <a  href="?page={{ pages.next_page_number }}">下一页</a>
+                        {% endif %}</li>
+                        </ul>
+			<script>
+                                window.onload = function (){
+                                var arr = document.getElementsByTagName('button');
+                                for(var i = 0;i<arr.length;i++){
+                                        arr[i].onclick = function(){
+                                                //alert(this.id);
+                                                $("#service_name").val(this.id);
+
+                                        }
+                                }
+				}
+
+			</script>
+
+
+
+
+                {% else %}
+                         <div class="alert alert-warning">
+                                <h4> <strong>this service_manager_list is none</strong> please choose one</h4></div>
+                {% endif %}
+
+
+
+
+	{% endblock %}
+
+	{% block footer %}{% endblock %}
+
+	</body>
+</html>

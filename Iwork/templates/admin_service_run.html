@@ -1,0 +1,92 @@
+{% extends "baseadmin.html" %}
+{% load url from future %}
+<html>
+  <head>
+	{% block head %} {% endblock %}
+    {% block title %}<title>Sign in Twitter Bootstrap</title>{% endblock %}
+	<style type="text/css">
+
+	{% include "msg.html" %}
+	</style>
+  </head>
+  <body>
+
+   {% block content %}
+    {% endblock %}
+	{% block file %}{% csrf_token %}
+	<ol class="breadcrumb">
+                <li><a href="/Iwork/admin/">Home</a></li>
+                <li><a href="#">Run_server</a></li>
+                <li class="active">Data</li>
+	
+           </ol>
+
+		<div class="alone_c">
+                <form action="" method="post">{% csrf_token %}
+                <table class="table ">
+                        <tr >
+                        <td class="ipadd_td_left">请选择ip:</td>
+                        <td  class="ipadd_td_right">
+                        <select name="select" id="ipname" class="form-control" >
+                        <option value="" selected="selected" >----------------</option>
+                        {% for ip in iplist %}
+                        <option value="{{ ip.id }}" >{{ ip.ip_address }} </option>
+                        {% endfor %}
+                        </select></td>
+                        <td>*</td>
+                        </tr></br>
+
+
+			<tr>
+                        <td class="ipadd_td_left">请选择脚本名:</td>
+                        <td  class="ipadd_td_right">
+                        <select name="select_s" id="ipname" class="form-control" >
+                        <option value=""  >----------------</option>
+                        {% for server in serverlist %}
+                        <option value="{{ server.id }}">{{ server.scriptname }} </option>
+                        {% endfor %}
+                        </select></td>
+                        <td>*</td>
+                        </tr></br>
+			
+			<tr>
+                        <td class="ipadd_td_left">请输入要上传远程服务器脚本的路径： </td>
+                        <td class="ipadd_td_left"><input class="form-control" id="focusedInput" type="text" value="/root/"></td>
+                        <td><span class="label label-info">默认为/root/目录下</span></td>
+                        </tr>	
+
+
+
+                        <tr>
+                        <td class="ipadd_td_left">请输入参数： </td>
+                        <td class="ipadd_td_left"><input type="text" name="remotepath" class="form-control" placeholder="Full file path"></td>
+                        <td></td>
+                        </tr>
+			
+			<tr>
+                        <td class="ipadd_td_left">请选择要上传的配置文件： </td>
+                        <td class="ipadd_td_left"><input type="file" id="exampleInputFile" name="docfile"></td>
+                        <td><span class="label label-info">默认为/root/目录下</span></td>
+                        </tr>
+                </table><hr>
+                <td class="ipadd_td_left"><button  type="submit" name="run" class="btn btn-primary"> 执行 </button></td>
+                </form>
+
+		</div>
+                <div class="active">
+                <table class="table table-striped">
+                <td align="left">
+                <h5><p>Service{{ip}}返回信息:</p></h5>
+                [{{ User}}@{{hostname}}~]#{{Command}}
+                {% for i in commandout  %}
+                         <p class="text-primary">{{ i|safe }}</br></p>
+                {% endfor %}
+                </td></table>
+                </div>
+
+	{% endblock %}
+
+	{% block footer %}{% endblock %}
+
+	</body>
+</html>

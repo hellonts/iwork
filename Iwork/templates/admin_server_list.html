@@ -1,0 +1,80 @@
+{% extends "baseadmin.html" %}
+{% load url from future %}
+<html>
+  <head>
+	{% block head %} {% endblock %}
+    {% block title %}<title>Sign in Twitter Bootstrap</title>{% endblock %}
+  </head>
+  <body>
+
+   {% block content %}
+         
+    {% endblock %}
+	{% block file %}
+	<ol class="breadcrumb">
+                <li><a href="/Iwork/admin/">Home</a></li>
+                <li><a href="#">Serverlist</a></li>
+                <li class="active">Data</li>
+	
+           </ol>
+	 	{% if pages %}
+		<form action="" method="post">{% csrf_token %}
+		<div class="page">
+      			<table   class="table table-hover table-condensed" >
+        			<thead >
+          			<tr class="active">
+            			<th><input name="checkall1" type="checkbox" value="0" onClick="checkAllBox(this);"/></th>
+            			<th>ip_list</th>
+            			<th>port</th>
+            			<th>user</th>
+        	    		<th>passwd</th>
+            			<th>publish_time</th>
+            			<th></th>
+          			</tr>
+        			</thead>
+				{% for server in pages %}
+        			<tbody >
+				<tr >
+	
+            			<td>
+				<label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox{{ip.id}}" name="answer" value="{{server.id}}"></label></td>
+            			<td><h4>{{ server.ip_address }}</h4> </td>
+          			<td><h4>{{ server.port }}</h4> </td>
+            			<td><h4>{{ server.user }}</h4></td>
+            			<td><h4>*</h4></td>
+            			<td><h4>{{ server.publish_time|date:"Y-m-d H:s" }}</h4> </td>
+            			<td> </td>
+          			</tr>
+
+
+        			</tbody>
+				{% endfor %}
+			</table>
+		</div>
+		<div class="content-toolbar btn-toolbar pull-left clearfix">
+		   <tr class="active"><button  class="btn btn-primary btn-sm" type="button" onclick="{location.href='/Iwork/admin/ipadd/'}"/><span class="glyphicon glyphicon-plus"></span>Add</button></tr>
+		  <tr class="active"><button href="" class="btn btn-warning btn-sm" type="submit"><span class="glyphicon glyphicon-repeat"></span> Update</button></tr>
+		  <tr class="active"><button name="delete" class="btn btn-danger btn-sm" type="submit"><span class="glyphicon glyphicon-trash"></span> Delete</button></tr> 
+		</div>
+		</form>
+			<ul class="pagination">
+                	<li > {% if pages.has_previous %}
+                     	<a href="?page={{ pages.previous_page_number }}">上一页</a>
+                     	{% endif %}</li>
+			<li class="active"><a>第{{ pages.number }}页<span class="sr-only">(current)</span></a></li>
+                	<li><a>共{{ pages.paginator.num_pages }}页</a></li>
+                	<li > {% if pages.has_next %}
+                     	<a href="?page={{ pages.next_page_number }}">下一页</a>
+                     	{% endif %}</li>
+         		</ul>
+		{% else %}
+			 <div class="alert alert-warning">
+               			<h4> <strong>this group_name is none</strong> please <a href="/Iwork/admin/ipadd/" class="alert-link">ip_add</a></h4></div>
+		{% endif %}
+	{% endblock %}
+
+	{% block footer %}{% endblock %}
+
+	</body>
+</html>

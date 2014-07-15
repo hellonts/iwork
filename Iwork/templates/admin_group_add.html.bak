@@ -1,0 +1,59 @@
+{% extends "baseadmin.html" %}
+{% load url from future %}
+<html>
+  <head>
+
+	{% block head %} {% endblock %}
+    {% block title %}<title>Sign in Twitter Bootstrap</title>{% endblock %}
+  </head>
+  <body>
+   {% block content %}
+   {% endblock %}
+	
+	 {% block file %}
+
+        	<ol class="breadcrumb">
+                <li><a href="/Iwork/admin/">Home</a></li>
+                <li><a href="#">Groupadd</a></li>
+                <li class="active">Data</li>
+           	</ol>
+		{% if form.errors %}
+    		<div class="alert alert-error">
+        		Please correct the error {{ form.errors|pluralize }} below.
+    		</div>
+		{% endif %}
+		<form action="" method="post">
+		{% csrf_token %}
+			<table class="table table-striped">
+			<tr class="filter">
+			<td class="ipadd_td_left">组名：</td>
+			<!--td><input class="form-control" type="text" name="group_name"id="group_name" placeholder="Groupname" style="position:relative;float:left;height:28px;width:38%"></td-->
+			<td >{{ form.group_name }} <label class="hostadd_must">*</label></td>
+			</tr>
+			</table>
+			<select id="test" name="test[]" multiple="multiselct"  size="5">
+				{% for iplist in ips %}
+      			<option value="{{iplist.id }}" selected="selected" >{{iplist.ip_address }}</option>
+				{% endfor %}
+    			</select>
+				    <script type="text/javascript">
+                 $('#test').multiSelect({ test: true });
+                                </script>
+
+
+       		<td><input type="submit" class="btn btn-primary" value="添 加" ></td> 
+    		</form>
+
+
+
+		  
+        {% endblock %}
+
+
+
+
+	{% block footer %}
+      {% endblock %}
+
+	</body>
+</html>

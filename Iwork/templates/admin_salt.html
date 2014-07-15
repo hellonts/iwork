@@ -1,0 +1,92 @@
+{% extends "baseadmin.html" %}
+{% load url from future %}
+<html>
+  <head>
+	{% block head %} {% endblock %}
+    {% block title %}<title>Sign in Twitter Bootstrap</title>{% endblock %}
+  </head>
+  <body>
+
+   {% block content %}
+         
+    {% endblock %}
+	{% block file %}
+       	   <ol class="breadcrumb">
+                <li><a href="/Iwork/admin/">Home</a></li>
+                <li><a href="#">salt</a></li>
+                <li class="active">Data</li>
+	
+           </ol>
+		<form action=""	method="post"> {% csrf_token %}
+		<table class="table ">
+		<tbody>
+		<tr class="ipadd_td_left">
+                <td class="col-xs-1">查看当前salt-key:</td>
+                <td class="col-xs-1" style="text-align:left;"><button type="submit" name="salt_key_list" class="btn btn-info btn-sm">显示salt-key</button></td>
+                <td class="col-xs-1" style="text-align:left;"><button type="button" name="salt_key_add" class="btn btn-info btn-sm" onclick="{location.href='/Iwork/admin/salt_key_add/'}"/>增加salt-key</button></td>
+                <td class="col-xs-1" style="text-align:left;"></td>
+                <td class="col-xs-1" style="text-align:left;"></td>
+                <td class="col-xs-1" style="text-align:left;"></td>
+                </tr>	
+		<tr class="ipadd_td_left">
+                <td class="col-xs-1">执行salt:</td>
+                <td class="col-xs-1" style="text-align:left;"><input name="nodelist" class="form-control" placeholder="* 或者Accepted Keys"></td>
+                <td class="col-xs-1" style="text-align:left;">
+		<select id="option" class="form-control" name="option">
+		<option value="" selected="selected">选择类型</option>
+		<option value=""></option>
+		</select>
+		</td>
+                <td class="col-xs-1" style="text-align:left;"><a href="/Iwork/admin/sshtypeadd/" span class="glyphicon glyphicon-plus"></a></td>
+                <td class="col-xs-1" style="text-align:left;white-space:nowrap;word-break:nowrap; text-align:left;"><input name="command" class="form-control" placeholder="参数"></td>
+
+		 <td style="text-align:left;"><button type="submit" class="btn btn-primary btn-sm" >run</button</td>
+                </tr>  
+		</tbody> 
+		</table>
+		</form>
+
+		{% if data %}
+			 <table class="table">
+                            <tbody>
+                                  <tr>
+                                    <td text-align="left">
+                                       <div text-align="left">
+                                          <ol>
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">   &times;&nbsp;</button>
+                                                 <pre class="prettyprint  Lang-bash alert alert-success">
+                                                  {% for i in data %}<li class="code"><span>{{i}}</li></span>{% endfor %}
+                                                 </pre>
+                                          </ol>
+                                        </div>
+                                   </td>
+                                  </tr>
+                            </tbody>
+                         </table>
+
+
+
+
+		{% else %}
+
+		
+		{% endif %}
+		
+		{% if keyadd %}
+		
+			<p>1234</p>
+		{% endif %}
+
+
+
+
+
+
+
+
+	{% endblock %}
+
+	{% block footer %}{% endblock %}
+
+	</body>
+</html>

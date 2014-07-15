@@ -1,0 +1,48 @@
+{% extends "baseadmin.html" %}
+{% load url from future %}
+<html>
+  <head>
+	{% block head %} {% endblock %}
+    {% block title %}<title>Sign in Twitter Bootstrap</title>{% endblock %}
+	<style type="text/css">
+
+	{% include "msg.html" %}
+	</style>
+  </head>
+  <body>
+
+   {% block content %}
+    {% endblock %}
+	{% block file %}{% csrf_token %}
+	<ol class="breadcrumb">
+                <li><a href="/Iwork/admin/">Home</a></li>
+                <li><a href="#">server_add</a></li>
+                <li class="active">Data</li>
+
+           </ol>
+		<form  enctype="multipart/form-data" action="" method="post">{% csrf_token %}
+		<div class="server_add">
+		<div class="input-group">
+  		<span class="input-group-addon" >请输入服务名</span>
+  		<input type="text" class="form-control" placeholder="servername" name="servername">
+		</div>
+		<br>
+		<div class="input-group">
+  		<span class="input-group-addon">请输入脚本名</span>
+  		<input type="text"  class="form-control" placeholder="scriptname" name="scriptname">
+		</div>
+		<br>
+
+    		<input type="file" id="exampleInputFile" name="docfile" class="float: left;">
+		<hr>	
+		<button type="submit" class="btn btn-default">提交</button>
+		</div>
+
+		</form>
+
+	{% endblock %}
+
+	{% block footer %}{% endblock %}
+
+	</body>
+</html>

@@ -1,0 +1,67 @@
+{% extends "baseadmin.html" %}
+{% load url from future %}
+<html>
+  <head>
+	{% block head %} {% endblock %}
+    {% block title %}<title>Sign in Twitter Bootstrap</title>{% endblock %}
+  </head>
+  <body>
+
+   {% block content %}
+         
+    {% endblock %}
+	{% block file %}
+       	   <ol class="breadcrumb">
+                <li><a href="/Iwork/admin/">Home</a></li>
+                <li><a href="#">ipadd</a></li>
+                <li class="active">Data</li>
+	
+           </ol>
+	<div class="filetext">
+	<form action="" method="post">
+	{% csrf_token %}
+    <table class="table table-striped">
+    <tr class="ipadd_td_left">
+	<td class="col-xs-1">{{ form.ip_address.label }}</td>
+        <td class="col-xs-3">{{ form.ip_address }}</td>
+  	<td style="text-align:left">{{form.ip_address.errors}}</td>
+	</tr>
+    <tr class="ipadd_td_left">
+        <td class="col-xs-1">{{ form.port.label }}</td>
+        <td class="col-xs-3">{{ form.port }}</td>
+  	<td style="text-align:left">{{form.port.errors}}</td>
+    </tr>
+    <tr class="ipadd_td_left">
+        <td class="col-xs-1">{{ form.user.label }}</td>
+        <td class="col-xs-3">{{ form.user }}</td>
+  	<td style="text-align:left">{{form.user.errors}}</td>
+    </tr>
+
+    <tr class="ipadd_td_left">
+        <td class="col-xs-1">{{ form.passwd.label }}</td>
+        <td class="col-xs-3">{{ form.passwd }}</td>
+  	<td style="text-align:left">{{form.passwd.errors}}</td>
+    </tr>
+    <tr class="ipadd_td_left">
+        <td class="col-xs-1">{{ form.hostname.label }}</td>
+        <td class="col-xs-3">{{ form.hostname }}</td>
+  	<td style="text-align:left">{{form.hostname.errors}}</td>
+    </tr>
+    <tr class="ipadd_td_left">
+        <td class="col-xs-1">{{form.protocol_type.label}}</td>
+	<td class="col-xs-3">{{form.protocol_type}}</td>
+	<td nowrap style="text-align:left;white-space:nowrap;word-break:nowrap;"><a href="/Iwork/admin/sshtypeadd/" span class="glyphicon glyphicon-plus"></a>&nbsp;{{form.protocol_type.errors}}</td>
+    </tr></table><hr>
+    <tr> 
+  	<td></td>
+        <td><button  type="submit" class="btn btn-primary"> 添 加 </button></td>
+    </tr>
+    
+</form>
+	</div>
+	{% endblock %}
+
+	{% block footer %}{% endblock %}
+
+	</body>
+</html>

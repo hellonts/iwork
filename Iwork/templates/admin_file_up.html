@@ -1,0 +1,59 @@
+{% extends "baseadmin.html" %}
+{% load url from future %}
+<html>
+  <head>
+	{% block head %}{% endblock %}
+    {% block title %}<title>Sign in Twitter Bootstrap</title>{% endblock %}
+	<style type="text/css">
+
+	{% include "msg.html" %}
+	</style>
+  </head>
+  <body>
+
+   {% block content %}
+    {% endblock %}
+	{% block file %}{% csrf_token %}
+	<ol class="breadcrumb">
+                <li><a href="/Iwork/admin/">Home</a></li>
+                <li><a href="#">File_up</a></li>
+                <li class="active">Data</li>
+	
+           </ol>
+		<div class="alone_c">
+
+		{% if messages %}
+		<p class="messages">
+    		{% for message in messages %}
+    		<li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="text-align:left;">{{ message }}</li>
+    		{% endfor %}
+		</p>
+		{% endif %}
+		<form enctype="multipart/form-data " action="" method="post">{% csrf_token %}
+		<table class="table ">
+		<tr class="ipadd_td_left">
+    		<td class="col-xs-1">{{form.docfile.label}}</td>
+  	  	<td class="col-xs-2" style="text-align:left;"><!--input class="multifile" type="file" id="docfile" name="docfile" -->{{form.docfile}}</td>
+		<td class="col-xs-2" style="text-align:left;">{{ form.docfile.errors }}</td>
+		</tr>
+		<tr>
+		<td class="col-xs-1"><button type="submit" class="btn btn-default">提交</button></td>
+		<td class="col-xs-2"></td>
+		<td class="col-xs-2"></td>
+		</tr>
+		</table>
+
+		</form>
+		</div>
+		<script type="text/javascript">
+    		jQuery(function($)
+    		{
+      		$('#docfile').multifile();
+    		});
+		</script>
+	{% endblock %}
+
+	{% block footer %}{% endblock %}
+
+	</body>
+</html>

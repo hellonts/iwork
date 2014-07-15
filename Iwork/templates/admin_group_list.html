@@ -1,0 +1,86 @@
+{% extends "baseadmin.html" %}
+{% load url from future %}
+<html>
+  <head>
+	{% block head %} {% endblock %}
+    {% block title %}<title>Sign in Twitter Bootstrap</title>{% endblock %}
+  </head>
+  <body>
+
+   {% block content %}
+    {% endblock %}
+	{% block file %}{% csrf_token %}
+	<ol class="breadcrumb">
+                <li><a href="/Iwork/admin/">Home</a></li>
+                <li><a href="#">Grouplist</a></li>
+                <li class="active">Data</li>
+	
+           </ol>
+
+
+		{% if pages %}
+		<div class="page">
+                        <table   class="table table-hover table-condensed" >
+                                <thead>
+                                <tr class="active">
+                                <th><input name="checkall1" type="checkbox" value="0" onClick="checkAllBox(this);"/></th>
+                                <th>group_name</th>
+                                <th>publish_time</th>
+                                </tr>
+                                </thead>
+                                {% for group in pages %}
+				
+                                <tbody >
+                                <tr >
+
+                                <td><label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox{{ip.id}}" name="answer" value="{{group.id}}"></label></td>
+                                <td><h4>{{ group.group_name }}</h4> </td>
+                                <td><h4>{{ group.publish_time|date:"Y-m-d H:s" }}</h4> </td>
+                        
+                                </tr>
+
+
+                                </tbody></div>
+                                {% endfor %}
+                        </table>
+
+				</div>
+                <div class="content-toolbar btn-toolbar pull-left clearfix">
+             <tr class="active"><button  class="btn btn-primary btn-sm" type="button" onclick="{location.href='/Iwork/admin/groupadd/'}"/><span class="glyphicon glyphicon-plus"></span>Add</button></tr>
+                  <tr class="active"><button href="" class="btn btn-warning btn-sm" type="submit"><span class="glyphicon glyphicon-repeat"></span> Update</button></tr>
+                  <tr class="active"><button href="" class="btn btn-danger btn-sm" type="submit"><span class="glyphicon glyphicon-trash"></span> Delete</button></tr> 
+                </div>
+
+
+
+				<ul class="pagination">
+                        <li > {% if pages.has_previous %}
+                        <a href="?page={{ pages.previous_page_number }}">上一页</a>
+                        {% endif %}</li>
+                        <li class="active"><a>第{{ pages.number }}页<span class="sr-only">(current)</span></a></li>
+                        <li><a>共{{ pages.paginator.num_pages }}页</a></li>
+                        <li > {% if pages.has_next %}
+                        <a href="?page={{ pages.next_page_number }}">下一页</a>
+                        {% endif %}</li>
+                        </ul>
+		{% else %}
+
+
+
+
+
+		 <div class="alert alert-warning">
+               <h4> <strong>this group_name is none</strong> please <a href="/Iwork/admin/groupadd/" class="alert-link">group_add</a></h4></div>
+		<div class="alert alert-warning">
+               <h4> <strong>this ssh_type is none</strong> please <a href="/Iwork/admin/sshtypeadd/" class="alert-link">sshtype_add</a></h4></div>
+
+
+	   	{% endif %}
+
+	{% endblock %}
+
+	{% block footer %}{% endblock %}
+
+	</body>
+</html>

@@ -1,0 +1,57 @@
+{% extends "baseadmin.html" %}
+{% load url from future %}
+<html>
+  <head>
+	{% block head %} {% endblock %}
+    {% block title %}<title>Sign in Twitter Bootstrap</title>{% endblock %}
+  </head>
+  <body>
+
+   {% block content %}
+    {% endblock %}
+	{% block file %}{% csrf_token %}
+	<ol class="breadcrumb">
+                <li><a href="/Iwork/admin/">Home</a></li>
+                <li><a href="#">Stand-alone_Command</a></li>
+                <li class="active">Data</li>
+	
+           </ol>
+		<div class="alone_c">
+		<form action="" method="post">{% csrf_token %}
+    		<table class="table ">
+			<tr class="ipadd_td_left">
+			<td class="col-xs-1">请选择ip： </td>
+			<td  class="col-xs-2">
+    			<select name="select" id="ipname" class="form-control" required >
+        		<option value="" selected="selected" >----------------</option>
+        		{% for ip in iplist %}
+        		<option value="{{ ip.id }}" >{{ ip.ip_address }} </option>
+        		{% endfor %}
+        		</select></td>
+			<td class="col-xs-2"></td>
+			</tr></br>
+			<tr class="ipadd_td_left">
+			<td class="col-xs-1">请输入要执行的命令： </td>
+			<td class="col-xs-2"><input type="text" name="command"class="form-control" placeholder="Text input" required ></td>
+			<td class="col-xs-2" style="text-align:left"><button  type="submit" name="zhixing" class="btn btn-primary btn-sm"> 执行 </button></td>
+			</tr>
+
+		</table></form>
+		</div>
+		<div class="active">
+		<table class="table table-striped">
+		<td align="left">
+		<h5><p>Service{{ip}}返回信息:</p></h5>
+		 [{{ User }}@{{ hostname }}~]#{{Command}}
+		{% for i in disdata  %}
+			 <p class="text-primary">{{ i|safe }}</br></p>
+		{% endfor %}	
+		</td></table>
+		</div>
+
+	{% endblock %}
+
+	{% block footer %}{% endblock %}
+
+	</body>
+</html>

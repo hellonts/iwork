@@ -1,0 +1,61 @@
+{% extends "baseadmin.html" %}
+{% load url from future %}
+<html>
+  <head>
+	{% block head %} {% endblock %}
+    {% block title %}<title>Sign in Twitter Bootstrap</title>{% endblock %}
+	<style type="text/css">
+
+	{% include "msg.html" %}
+	</style>
+  </head>
+  <body>
+
+   {% block content %}
+    {% endblock %}
+	{% block file %}
+	<ol class="breadcrumb">
+                <li><a href="/Iwork/admin/">Home</a></li>
+                <li><a href="#">deploy_env_add</a></li>
+                <li class="active">Data</li>
+
+           </ol>
+		<form    action="" method="post"  >{% csrf_token %}
+		<table class="table " style="text-align:right">
+    		<tr >
+        	<td class="col-xs-2">{{ form.envname.label }}</td>
+        	<td class="col-xs-3">{{ form.envname }}</td>
+        	<td class="col-xs-3" style="text-align:left">{{ form.envname.errors }}</td>
+        	</tr>
+		<tr >
+                <td class="col-xs-2">{{ form.scriptname.label }}</td>
+                <td class="col-xs-3">{{ form.scriptname }}</td>
+                <td class="col-xs-3" style="text-align:left">{{ form.scriptname.errors }}</td>
+                </tr>
+    		<!--tr>
+        	<td class="col-xs-2">请选择要上传的部署脚本:</td>
+        	<td class="col-xs-3"><input class="multifile" type="file" id="docfile" name="docfile"></td>
+        	<td class="col-xs-3" style="text-align:left"></td>
+    		</tr-->
+		 <tr>
+        	<td class="col-xs-2">{{ form.env_ver.label }}</td>
+        	<td class="col-xs-3">{{ form.env_ver }}</td>
+        	<td class="col-xs-3" style="text-align:left"> <a href="/Iwork/admin/envver_add/" span class="glyphicon glyphicon-plus"></a>&nbsp;{{ form.env_ver.errors }}</td>
+    		</tr>
+		</table>	
+		 <td><button  type="submit" class="btn btn-primary"> 添 加 </button></td>
+
+
+		</form>
+		  <script type="text/javascript">
+                jQuery(function($)
+                {
+                $('#docfile').multifile();
+                });
+                </script>
+	{% endblock %}
+
+	{% block footer %}{% endblock %}
+
+	</body>
+</html>

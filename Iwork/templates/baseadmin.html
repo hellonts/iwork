@@ -1,0 +1,266 @@
+<html>
+  <head>
+    {% block head %} {% endblock %}
+    <meta name="generator"
+    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+    <meta charset="utf-8" />
+   
+    {% block title %} <title>Sign in Twitter Bootstrap</title> {% endblock %}
+    <!-- Le styles -->
+    <link href="/static/bt3.0.3/css/bootstrap.css" type="text/css" rel="stylesheet" />
+    <link href="/static/bt3.0.3/css/offcanvas.css" type="text/css" rel="stylesheet" />
+    <link href="/static/lou-multi/css/multi-select.css" rel="stylesheet" type="text/css"/> 
+    <link href="/static/jquery/prettify.css" rel="stylesheet" type="text/css"/> 
+     <style type="text/css">
+      	.breadcrumb { 
+	list-style: none; 
+	overflow: hidden; 
+	font: 15px Helvetica, Arial, Sans-Serif;
+	}
+	.breadcrumb li { 
+	float: left; 
+	}
+	.ipadd_td_left {
+	font-size: 13px;
+	text-align:right;
+	}
+	.ipadd_td_right{
+	font-size: 13px;
+	text-align:left;
+	
+	}
+	h1,h2,h3,h4{
+		font-weight:normal;
+		font-size:13px;
+	}
+	.table{
+	font-size: 13px;
+	}
+	.server_add{
+	font-size: 13px;width: 50%;float: left;
+	}
+	 .code{
+        display: list-item;
+	text-align: -webkit-match-parent;
+        }
+     </style>
+
+	
+    <script type="text/javascript" src="/static/bt3.0.3/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/bt3.0.3/js/bootstrap.js"></script>
+    <!--script type="text/javascript" src="/static/bootstraped/js/bootstraped.min.js"></script-->
+    <script type="text/javascript" src="/static/sco/js/sco.valid.js"></script>
+    <script type="text/javascript" src="/static/sco/js/sco.message.js"></script>
+    <script type="text/javascript" src="/static/sco/js/sco.ajax.js"></script>
+    <script type="text/javascript" src="/static/lou-multi/js/jquery.multi-select.js"></script>
+    <script type="text/javascript" src="/static/jquery/jquery.multifile.js"></script>
+    <script type="text/javascript" src="/static/jquery/prettify.js"></script>
+    <script type="text/javascript" src="/static/bt3.0.3/js/transition.js"></script>
+    <script type="text/javascript" src="/static/bt3.0.3/js/tooltip.js"></script>
+    <script type="text/javascript" src="/static/bt3.0.3/js/popover.js"></script>
+    <script type="text/javascript" src="/static/bt3.0.3/js/modal.js"></script>
+	{% block script %}
+		<script type="text/javascript">
+function checkAllBox(obj){
+ var answer= document.getElementsByName("answer");
+ if(obj.checked==true){
+  for(var i=0;i<answer.length;i++){
+   answer[i].checked = true;
+  }
+ }else{
+  for(var i=0;i<answer.length;i++){
+   answer[i].checked = false;
+  }
+ }
+}
+function checkData(){ 
+ var answer= document.getElementsByName("answer");
+ var flag = false;
+ for(var i=0;i<income.length;i++){
+  if(income[i].checked == true){
+   flag = true;
+   break;
+  }
+ }
+ if(!flag){
+  alert("请至少选择一项");
+ }
+ return flag;
+
+}
+
+
+		 function a(){
+                                window.onload = function(){
+                                var arr = document.getElementsByTagName('button');
+                                for(var i = 0;i<arr.length;i++){
+                                        arr[i].onclick = function(){
+                                                //alert(this.id);
+                                                $("#service_name").val(this.id);
+
+                                        }
+                                }
+                        }
+	}	
+
+
+
+
+
+		$('#myModal').modal({
+		  show: false
+			})//模态框
+
+
+
+
+
+
+		 //bootstrap pre_code
+		$(document).ready(function(){
+     		prettyPrint();
+		})
+	</script>
+{% endblock %}
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+    <!-- Fav and touch icons -->
+  </head>
+  <body>
+	
+    <div class="row">
+	{% block content %}
+		{% endblock %}
+      <div align="center" class="col-md-3" style="font-size:13px;">
+        <div class="span3" >
+	  <div class="panel-group" id="accordion" >
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">system_management</a>
+                </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body">
+                 <a href="/Iwork/admin/grouplist/" class="success1">Group_List</a><hr>
+                 <a href="/Iwork/admin/serverlist/" class="success2">Server_List</a><hr>
+                 <a href="/Iwork/admin/elone_command/" class="success2">Stand-alone_Command</a><hr>
+                 <a href="/Iwork/admin/file_transfer/" class="success2">File_transfer</a><hr>
+                 <a href="/Iwork/admin/file_upload/" class="success2">File_upload</a><hr>
+                 <a href="/Iwork/admin/service_manager/" class="success2">Service_manage</a><hr>
+                 <a href="/sblog/blog/add/" class="success2">Batch_Processing</a><hr>
+                 <a href="/Iwork/admin/deploy_env/" class="success2">Deployment_Environment</a>
+
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">system_status</a>
+                </h4>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <a href="/sblog/admin/blog/" class="success3">User_List</a><hr>
+                  <a href="/sblog/blog/add/" class="success4">Resource_use</a><hr>
+                  <a href="/sblog/blog/add/" class="success4">Port__use</a><hr>
+                  <a href="/sblog/blog/add/" class="success4">Server_Status</a><hr>
+                  <a href="/sblog/blog/add/" class="success4">Iptables_Status</a>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">system_resources</a>
+                </h4>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <a href="/Iwork/admin/grouplist/" class="success5">content_list</a>
+                  <hr />
+                  <a href="/sblog/blog/add/" class="success6">content_add</a>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">system_monitoring</a>
+                </h4>
+              </div>
+              <div id="collapseFour" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <a href="/sblog/admin/blog/" class="success7">content_list</a>
+                  <hr />
+                  <a href="/sblog/blog/add/" class="success8">content_add</a>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">automatic_processing</a>
+                </h4>
+              </div>
+              <div id="collapseFive" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <a href="/Iwork/admin/salt/" class="success9">salt</a>
+                  <hr />
+                  <a href="/sblog/blog/add/" class="success11">content_add</a>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+	</div>	
+        <div align="center" class="col-md-9">
+		{% block file %}{% endblock %}
+	</div>
+      
+   </div>
+    <hr />
+  {% block footer %}
+  {% endblock %}
+  <div class="row-fluid">
+        <div align="center" class="col-md-12">
+		<footer>
+                  <p>&copy; Company 2014</p>
+                </footer>
+
+		</div>
+   </div>
+    
+
+
+     <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span> 
+          <a class="navbar-brand" href="#">system</a></button>
+        </div>
+        <div class="collapse navbar-collapse">
+	 <p class="navbar-text pull-right">Logged in as <a href="#" class="navbar-link">{{user.username}}</a></p>
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="#">Background management center</a>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="/Iwork/login/">logout</a>
+            </li>
+          </ul>
+        </div>
+        <!-- /.nav-collapse -->
+      </div>
+      <!-- /.container -->
+    </div>
+    <!-- /.navbar -->
+  </body>
+</html>

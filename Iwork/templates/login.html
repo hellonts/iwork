@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block head %} {% endblock %}
+	
+	
+	{% block content %}
+<div class="container-fluid">
+
+	<div class="row-fluid">
+		<div class="span12">
+		</div>
+	</div><hr>
+
+
+
+
+	<div class="row-fluid">
+		<div class="span8" >
+
+
+
+
+
+
+
+		</div>
+		<div class="span4">
+			<form class="form-signin" action="" id="validform"  method="post" >
+				{% csrf_token %}
+				<div><h2 class="form-signin-heading">Please sign in</h2>
+					<!--input type="text" name="username" id="id_username" class="input-block-level" placeholder="username" -->
+					<table >
+					<tbody>
+					<tr>
+					<td >{{form.username.label}}</td><td >{{form.username}}</td><td></td></tr>
+					<tr>
+					<td >{{form.password.label}}</td><td >{{form.password}}</td><td></td></tr>
+					</tbody></table>
+					
+					<!--input type="password" name="password" id="id_password" class="input-block-level" placeholder="Password" -->
+						<label class="checkbox">
+							<input type="checkbox" value="remember-me"> Remember me</label>
+					<button class="btn  btn-primary" type="submit">Sign in</button>
+				</div>
+
+
+
+
+			</form>
+
+			{% if form.username.errors %}
+			<div class="alert alert-error">
+				{{form.username.errors}}
+
+			</div>
+			{% endif %}
+			 {% if form.password.errors %}
+                        <div class="alert alert-error">
+                                {{form.password.errors}}
+
+                        </div>
+                        {% endif %}
+			{% if password_is_wrong %}
+				<div class="alert alert-error">
+					<h5>错误!用户名或密码不正确</h5>
+				</div>
+			{% endif %}
+		</div>
+
+	</div><hr>
+	
+{% endblock %}
+	
+		 {% block footer %}
+		{{ block.super }}
+	<div class="row-fluid">
+		<div class="span4">
+		<footer>
+		  <p>&copy; Company 2014</p>
+		</footer>		
+
+
+		</div>
+		<div class="span4">
+
+
+
+
+
+
+
+
+
+		</div>
+		<div class="span4">
+		</div>
+	</div>
+</div>
+   <!-- /container -->
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+                                                                                                     
+	<script >
+	$(function() {    
+		$('#valid_form').scojs_valid({rules: {username: ['not_empty', 'not_empty'], password: ['not_empty', {'min_length': 4}] }});  
+		});
+	</script>
+
+
+        		{% endblock %}
